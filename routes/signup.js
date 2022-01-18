@@ -5,7 +5,9 @@ const { csrfProtection, asyncHandler } = require('./utils');
 
 
 router.get('/', csrfProtection, asyncHandler(async(req, res) => {
+    const user = await db.User.build();
 
+    res.render('sign-up', {csrfToken: req.csrfToken(), user, title: 'Sign-Up Form'})
 }));
 
 router.post('/', csrfProtection, asyncHandler(async(req, res) => {
