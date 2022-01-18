@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   }, {});
-  Comment.associate = function(models) {
+  Comment.associate = function (models) {
     // associations can be defined here
-    Comment.belongsTo(models.Post, {foreignKey: 'postId'})
-    Comment.belongsTo(models.User, {foreignKey: 'userId'})
+    Comment.belongsTo(models.Post, { foreignKey: 'postId' })
+    Comment.belongsTo(models.User, { foreignKey: 'userId' })
+    Comment.hasMany(models.Like, { foreignKey: 'commentId' })
   };
   return Comment;
 };

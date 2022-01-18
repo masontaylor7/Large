@@ -6,14 +6,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     userId: {
-      type:DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     }
   }, {});
-  Post.associate = function(models) {
+  Post.associate = function (models) {
     // associations can be defined here
-    Post.belongsTo(models.User, {foreignKey: 'userId'})
-    Post.hasMany(models.Comment, {foreignKey: 'postId'})
+    Post.belongsTo(models.User, { foreignKey: 'userId' })
+    Post.hasMany(models.Comment, { foreignKey: 'postId' })
+    Post.hasMany(models.Like, { foreignKey: 'postId' })
   };
   return Post;
 };

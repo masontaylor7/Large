@@ -16,10 +16,23 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING.BINARY
     }
   }, {});
-  User.associate = function(models) {
+  User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.Post, {foreignKey: 'userId'})
-    User.hasMany(models.Comment, {foreignKey: 'userId'})
+    User.hasMany(models.Post, { foreignKey: 'userId' })
+    User.hasMany(models.Comment, { foreignKey: 'userId' })
+    User.hasMany(models.Like, { foreignKey: 'userId' })
+    User.belongsToMany(models.User, {
+      through: 'Follower',
+      otherKey: 'followerId',
+      foreignKey: 'followedId',
+      as: 'followers'
+    })
+    User.belongsToMany(models.User, {
+      through: 'Follower',
+      otherKey: 'followedId',
+      foreignKey: 'followerId',
+      as: 'followeds'
+    })
   };
   return User;
 };
