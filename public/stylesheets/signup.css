@@ -1,1 +1,102 @@
+.nav-bar {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    background-color: rgb(255,192,23);
+    border-bottom: 1px solid black;
+}
 
+.medium-img {
+    margin-left: 40px;
+    height: 25px;
+}
+
+.large-font {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px 10px;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0px auto auto auto;
+    max-width: none;
+    min-height: 320px;
+    background-color: rgb(255,192,23);
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+
+.inner-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.demo-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-button,
+.cancel-button,
+.demo-button {
+    margin: 5px;
+    height: 30px;
+    width: 100px;
+    min-width: none;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: 1px;
+}
+
+.signup-button:hover,
+.cancel-button:hover,
+.demo-button:hover {
+    cursor: pointer;
+}
+
+.signup-button {
+    background-color: black;
+}
+
+.cancel-button {
+    background-color: rgba(255, 0, 0, 0.794);
+}
+
+.demo-button {
+    height: 20px;
+    width: 80px;
+    background-color: rgba(0, 0, 255, 0.596);
+}
+
+.inp {
+    width: 25rem;
+    height: 25px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+}
