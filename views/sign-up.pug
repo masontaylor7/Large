@@ -4,18 +4,29 @@ append head
     link(rel='stylesheet' href='/stylesheets/signup.css')
 
 block content
-    if errors
-        each error in errors
-            p=error
-    form(action='/signup' method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        label(for='username') Username
-        input(type='text' name='username' value=user.username)
-        label(for='email') Email
-        input(type="text" name='email' value=user.email)
-        label(for="password") Password
-        input(type='text' name='password' value=hashedPassword)
-        label(for='confirmPassword') Confirm Password
-        input(type='text' name='confirmPassword')
-        button(type='submit' class='signup-button') Sign-Up
-        button(class='cancel-button' href='/') Cancel
+    .nav-bar
+        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+        h1.large-font Large
+    .signup-container
+        div.error-container
+            ul
+            if errors
+                each error in errors
+                    li=error
+        form(action='/signup' method='post')
+            .inner-container
+                input(type='hidden' name='_csrf' value=csrfToken)
+                label(for='username' class='font') Username
+                input(type='text' class='username-input inp' name='username' value=user.username)
+                label(for='email font' class='font') Email
+                input(type='text' class='email-input inp' name='email' value=user.email)
+                label(for='password' class='font') Password
+                input(type='text' class='password-input inp' name='password' value=hashedPassword)
+                label(for='confirmPassword' class='font') Confirm Password
+                input(type='text' class='confirm-pass-input inp' name='confirmPassword')
+            .button-container
+                button(class='cancel-button' href='/') Cancel
+                button(type='submit' class='signup-button') Sign-Up
+                button(type='submit' class='demo-button') Demo User
+            .demo-button-container
+    .footer
