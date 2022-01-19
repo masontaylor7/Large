@@ -4,6 +4,7 @@ const loginUser = (req, res, user) => {
     req.session.auth = {
         userId: user.id,
     };
+    req.session.save(() => res.redirect('/'));
 };
 
 const logoutUser = (req, res) => {
