@@ -1,16 +1,30 @@
 extends layout.pug
 
+append head
+    link(rel='stylesheet' href='/stylesheets/login.css')
+
 block content
-    if errors
-        each error in errors
-            p=error
-    form(action='/login' method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        label(for='email') Email
-        input(type="text" name='email' value=email)
-        label(for="password") Password
-        input(type='text' name='password')
-        button(type='submit' class='login-button') Log-In
-        button(class='cancel-button' href='/') Cancel
-    //- p Don't have an account?
-    //-     a(href='/signup') Sign Up
+    .nav-bar
+        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+        h1.large-font Large
+    .login-container
+        div.error-container
+            ul
+            if errors
+                each error in errors
+                    li.list=error
+        form(action='/login' method='post')
+            .inner-container
+                input(type='hidden' name='_csrf' value=csrfToken)
+                label(for='email' class='font') Email
+                input(type="text" name='email' class='email-input inp' value=email)
+                label(for="password" class='font') Password
+                input(type='text' name='password' class='password-input inp')
+            .button-container
+                button(type='submit' class='login-button') Log-In
+                button(class='cancel-button' href='/') Cancel
+                button(type='submit' class='demo-button') Demo User
+            .signup-container
+                p.font Don't have an account?
+                    a(class='signup-option font' href='/signup' ) Sign Up
+        .footer
