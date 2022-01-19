@@ -4,7 +4,7 @@ const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult, Result } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const { loginUser } = require('../auth');
+const { loginUser, requireAuth } = require('../auth');
 
 
 
@@ -27,42 +27,43 @@ router.get('/', csrfProtection, asyncHandler(async(req, res, next) => {
 }));
 
 
-router.post('/', csrfProtection, loginValidations, asyncHandler(async(req, res, next)=> {
-    const {
-        email,
-        password
-    } = req.body;
+router.post('/', csrfProtection, loginValidations, asyncHandler(async(req, res)=> {
+        const {
+            email,
+            password
+        } = req.body;
 
-    let errors = [];
-    const loginErrors = validationResult(req);
+        let errors = [];
+        const loginErrors = validationResult(req);
 
-    if (loginErrors.isEmpty()) {
-        const user = await db.User.findOne({
-            where: {
-                email
+        if (loginErrors.isEmpty()) {
+            const user = await db.User.findOne({
+                where: {
+                    email
+                }
+            });
+
+            if (user) {
+                const confirmPassword = await bcrypt.compare(password, user.hashedPassword.toString());
+
+                if (confirmPassword) {
+                    loginUser(req, res, user);
+                    console.log("req.session.auth: ", req.session.auth);
+                    return;
+                }
             }
-        });
 
-        if (user) {
-            const confirmPassword = await bcrypt.compare(password, user.hashedPassword);
-
-            if (confirmPassword) {
-                loginUser(req, res, user);
-                res.redirect('/');
-            }
+            errors.push('Invalid email or password.')
+        } else {
+            errors = loginErrors.array().map((err) => err.msg);
         }
 
-        errors.push('Invalid email or password.')
-    } else {
-        errors = loginErrors.array().map((err) => err.msg);
-    }
-
-    res.render('login', {
-        title: 'Log In',
-        email,
-        errors,
-        csrfToken: req.csrfToken()
-    });
+        res.render('login', {
+            title: 'Log In',
+            email,
+            errors,
+            csrfToken: req.csrfToken()
+        });
 }));
 
 module.exports = router;
