@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
-const { csrfProtection, asyncHandler, handleValidationErrors } = require('./utils');
-const { check } = require('express-validator');
+const { csrfProtection, asyncHandler } = require('./utils');
+const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 const signupValidators = [
@@ -11,7 +11,7 @@ const signupValidators = [
         .withMessage('Please provide a value for Username')
         .isLength({ max: 50 })
         .withMessage('Username must not be more than 50 characters long'),
-    check('emailAddress')
+    check('email')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a value for Email')
         .isLength({ max: 255 })
@@ -19,7 +19,7 @@ const signupValidators = [
         .isEmail()
         .withMessage('Provide a valid Email')
         .custom((value) => {
-            return db.User.findOne({ where: { emailAddress: value } })
+            return db.User.findOne({ where: { email: value } })
               .then((user) => {
                 if (user) {
                   return Promise.reject('The provided Email Address is already in use by another account');
@@ -52,18 +52,37 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
     res.render('sign-up', {csrfToken: req.csrfToken(), user, title: 'Sign-Up Form'})
 }));
 
-router.post('/', csrfProtection, signupValidators, handleValidationErrors, asyncHandler(async(req, res, next) => {
+router.post('/', csrfProtection, signupValidators, asyncHandler(async(req, res, next) => {
     const {
         username,
         email,
         password
     } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await db.User.create({
+
+    const user = await db.User.build({
         username,
         email,
-        password: hashedPassword
+        hashedPassword
     });
+
+    const validationErrors = validationResult(req);
+
+    if(validationErrors.isEmpty()){
+        await user.save();
+        res.redirect('/')
+    }else{
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render('sign-up', {
+            title: 'Sign-Up Form',
+            user,
+            errors,
+            csrfToken: req.csrfToken(),
+        });
+    }
+
+
+
 }));
 
 
