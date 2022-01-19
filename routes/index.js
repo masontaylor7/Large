@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   if (isLoggedIn) {
 
   } else {
-    const posts =
+    // const posts =
   }
   res.render('index', {
     title: 'Large Home Page',
