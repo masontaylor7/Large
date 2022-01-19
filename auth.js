@@ -42,6 +42,10 @@ const restoreUser = async (req, res, next) => {
     }
 };
 
+const isLoggedIn = (req, res, next) => {
+
+}
+
 module.exports = {
     loginUser,
     logoutUser,

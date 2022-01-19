@@ -7,20 +7,20 @@ const asyncHandler = (handler) => (req, res, next) =>
     handler(req, res, next)
         .catch(next);
 
-// const handleValidationErrors = (req, res, next) => {
-//     const validationErrors = validationResult(req);
+const handleValidationErrors = (req, res, next) => {
+    const validationErrors = validationResult(req);
 
-//     if (!validationErrors.isEmpty()) {
-//         const errors = validationErrors.array().map((err) => err.msg);
-
-//         const error = Error("Invalid input.");
-//         error.errors = errors;
-//         error.status = 400;
-//         error.title = "Invalid input.";
-//         return next(error);
-//     }
-//     next();
-// };
+    if (!validationErrors.isEmpty()) {
+        const errors = validationErrors.array().map((err) => err.msg);
+        res.render(view, {
+            title,
+            user,
+            errors,
+            csrfToken: req.csrfToken(),
+        });
+    }
+    next();
+};
 
 module.exports = {
     csrfProtection,
