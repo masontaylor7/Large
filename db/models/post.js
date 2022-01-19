@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
+    title: {
+      allowNull: false,
+      type: DataTypes.STRING(100)
+    },
     content: {
       type: DataTypes.TEXT,
       allowNull: false,

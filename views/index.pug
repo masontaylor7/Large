@@ -25,3 +25,13 @@ block content
     .start-writing-container
       button(class='start-writing-button'): a(href="/login") Start Writing
   .posts-block
+    each post in posts
+      .post-box
+        .post-author
+          p= post.User.username
+        .post-title
+          p= post.title
+        .post-content
+          p= post.content
+        .post-date
+          p= post.createdAt
