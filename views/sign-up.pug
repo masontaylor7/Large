@@ -12,7 +12,7 @@ block content
             ul
             if errors
                 each error in errors
-                    li=error
+                    li.list=error
         form(action='/signup' method='post')
             .inner-container
                 input(type='hidden' name='_csrf' value=csrfToken)
@@ -28,5 +28,7 @@ block content
                 button(class='cancel-button' href='/') Cancel
                 button(type='submit' class='signup-button') Sign-Up
                 button(type='submit' class='demo-button') Demo User
-            .demo-button-container
+            .login-container
+                p.font Already have an account?
+                    a(class='login-option font' href='/login' ) Log In
     .footer

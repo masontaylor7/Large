@@ -30,13 +30,14 @@
     background-color: rgba(235, 109, 109, 0.794);
     border-radius: 10px;
     width: 25rem;
+
 }
 
 .list{
     padding: 5px;
 }
 
-.signup-container {
+.login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,8 +68,16 @@
     justify-content: center;
 }
 
+.signup-container {
+    display: flex;
+    justify-content: center;
+}
 
-.signup-button,
+.signup-option{
+    margin-left: 5px;
+}
+
+.login-button,
 .cancel-button,
 .demo-button {
     margin: 5px;
@@ -81,13 +90,13 @@
     border: 1px;
 }
 
-.signup-button:hover,
+.login-button:hover,
 .cancel-button:hover,
 .demo-button:hover {
     cursor: pointer;
 }
 
-.signup-button {
+.login-button {
     background-color: black;
 }
 
@@ -110,13 +119,4 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 20%;
-}
-
-.login-container {
-    display: flex;
-    justify-content: center;
-}
-
-.login-option{
-    margin-left: 5px;
 }
