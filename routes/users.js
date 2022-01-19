@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
-const { csrfProtection, asyncHandler } = require('./utils');
+const { asyncHandler } = require('./utils');
+const { logoutUser } = require('../auth');
 
-//
+router.post('/logout', (req, res) => {
+    logoutUser(req, res);
+    res.redirect('/');
+})
 
 
 
