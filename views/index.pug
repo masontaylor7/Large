@@ -9,21 +9,26 @@ append head
 block content
   .nav-bar
     .logo-container
-      img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
-      h1.large-font Large
+      .medium-img
+        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+      .large-font
+        h1.large-font Large
     .button-container
       if (isLoggedIn)
         button(type='button' class='logout-button' href='/users/logout') Log Out
       else
-        button(type='button' class='login-button' href='/login') Sign In
+        a(type='button' class='login-button' href='/login') Sign In
         button(type='button' class='signup-button' href='/signup') Get Started
   .welcome-block
-    .writing-block
-      h2 Large is a place to write about videogames.
-    .smaller-text
-      p It's easy to bla bla bla
-    .start-writing-container
-      button(class='start-writing-button'): a(href="/login") Start Writing
+    .left-side-welcome
+      .writing-block
+        h2 Large is a place to write about videogames.
+      .smaller-text
+        p It's easy to bla bla bla
+      .start-writing-container
+        button(class='start-writing-button'): a(href="/login") Start Writing
+    .right-side-welcome
+      img(src='./public/imgs/medium-welcome-snip.JPG' class='quote-img')
   .posts-block
     each post in posts
       .post-box
