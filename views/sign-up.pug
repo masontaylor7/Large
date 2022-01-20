@@ -26,10 +26,15 @@ block content
                 label(for='confirmPassword' class='font') Confirm Password
                 input(type='text' class='confirm-pass-input inp' name='confirmPassword')
             .button-container
-                button(class='cancel-button' href='/') Cancel
+                button(class='cancel-button'): a(href='/' class="cancel-button-link") Cancel
                 button(type='submit' class='signup-button') Sign-Up
-                button(type='submit' class='demo-button') Demo User
-            .login-container
-                p.font Already have an account?
-                    a(class='login-option font' href='/login' ) Log In
+        .demo-button-container
+            form(action='/login' method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type='hidden' name='email' value='demo@demo.com')
+                input(type='hidden' name='password' value='demoPassword1!')
+                button(class='demo-button') Demo User
+        .login-container
+            p.font Already have an account?
+                a(class='login-option font' href='/login' ) Log In
     .footer
