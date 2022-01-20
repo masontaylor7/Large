@@ -18,7 +18,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
       include: 'User'
     });
   }
-  console.log(posts);
+  // console.clearlog(posts);
   res.render('index', {
     title: 'Large Home Page',
     isLoggedIn,

@@ -20,11 +20,12 @@ const requireAuth = (req, res, next) => {
 };
 
 const restoreUser = async (req, res, next) => {
-    console.log(req.session);
+    console.log("req.session in restoreUser: ", req.session);
+    console.log("req.session.auth in restoreUser: ", req.session.auth);
 
     if(req.session.auth) {
         const { userId } = req.session.auth;
-
+        console.log("userId in restoreUser:", userId);
         try {
             const user = await db.User.findByPk(userId);
 
