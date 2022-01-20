@@ -126,7 +126,10 @@ h1 {
 .footer {
     display: flex;
     align-items: center;
-    /* position: fixed; */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     min-height: 88px;
     margin-top: 40px;
     background-color: black;
