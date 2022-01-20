@@ -15,7 +15,8 @@ block content
         h1.large-font Large
     .button-container
       if (isLoggedIn)
-        button(type='button' class='logout-button' href='/users/logout') Log Out
+        form(action="/logout" method="post")
+          button(class='logout-button') Log Out
       else
         a(type='button' class='login-button' href='/login') Sign In
         button(type='button' class='signup-button' href='/signup') Get Started
