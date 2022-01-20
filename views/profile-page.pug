@@ -18,7 +18,7 @@ block content
                 img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
 
             div
-                p Following
+                h2.your-post-title Your Post
 
             each post in user
                 div.post-user
@@ -36,8 +36,10 @@ block content
 
         .side-content
             .box-post
-                p Writing on Large
-                p New gamer-writer FRQ
-                p Expert gaming advice
-                p Grow your gamership
+                .header-post
+                    p.writing.header-writing Writing on Large
+                    img(src='../imgs/x-image.png' class='exit-button')
+                p.writing New gamer-writer FRQ
+                p.writing Expert gaming advice
+                p.writing Grow your gamership
                 button.post-button Start writing
