@@ -10,7 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
-const superSecret = require('./config');
+const { superSecret }  = require('./config');
 const { restoreUser } = require('./auth');
 
 const app = express();
@@ -38,7 +38,6 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
-
 
 app.use(restoreUser);
 app.use(indexRouter);
