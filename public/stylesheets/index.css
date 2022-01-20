@@ -71,6 +71,12 @@ h1.large-font {
     border: 1px solid black;
 }
 
+.signup-button:hover,
+.start-writing-button:hover,
+.logout-button:hover {
+    cursor: pointer;
+}
+
 .start-writing-text {
     text-decoration: none;
 }
@@ -106,6 +112,57 @@ h1.large-font {
     margin-left: 30px;
 }
 
+.posts-block {
+    padding: 56px;
+}
+
 .post-box {
-    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.profile-img-small{
+    width: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid rgb(212, 212, 212);
+
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    margin: 0;
+}
+
+.post-username {
+    padding: 0 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.post-title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 22px;
+}
+
+.post-content {
+    margin-top: 8px;
+    padding: 8px 0px;
+    font-size: 16px;
+    color: dimgray;
+    margin: 0;
+}
+
+.post-footer {
+    color: dimgray;
+    font-size: 13px;
+    margin-top: 8px;
+    padding: 8px 0px;
+}
+
+.post-date {
+    margin: 0;
 }
