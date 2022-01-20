@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models')
-const { asyncHandler } = require('./utils')
+const { asyncHandler, getDate } = require('./utils')
 
 /* GET home page. */
 router.get('/', asyncHandler(async(req, res, next) => {
   const isLoggedIn = res.locals.verified;
+  const postDate = getDate;
   console.log("isLoggedIn: ", isLoggedIn);
   let posts;
   if (isLoggedIn) {
@@ -22,7 +23,8 @@ router.get('/', asyncHandler(async(req, res, next) => {
   res.render('index', {
     title: 'Large Home Page',
     isLoggedIn,
-    posts
+    posts,
+    postDate
   });
 }));
 
