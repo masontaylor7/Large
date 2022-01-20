@@ -12,10 +12,6 @@
     height: 25px;
 }
 
-.quote-img {
-    width: 200px;
-    height: 200px;
-}
 
 h1.large-font {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -40,6 +36,17 @@ h1.large-font {
     border: 1px;
 }
 
+.logout-button {
+    margin-right: 50px;
+    height: 40px;
+    width: 100px;
+    min-width: none;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: 1px;
+}
+
 .login-button {
     margin-right: 30px;
     font-size: 14px;
@@ -47,6 +54,54 @@ h1.large-font {
 }
 
 .welcome-block {
-    border: 1px solid black;
+    display: flex;
+    background-color: rgb(255,192,23);
+    border-bottom: 1px solid black;
     min-height: 400px;
+    max-height: 474px;
+}
+
+.start-writing-button {
+    height: 40px;
+    width: 150px;
+    min-width: none;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+.start-writing-text {
+    text-decoration: none;
+}
+
+.right-side-welcome {
+    display: flex;
+    align-self: flex-end;
+}
+
+.quote-img {
+    width: 400px;
+    height: 400px;
+    margin-bottom: -1px;
+    margin-left: 10px;
+    margin-right: 20px;
+    z-index: 1;
+    /* object-fit: cover; */
+}
+
+.writing-block {
+    width: 600px;
+}
+
+.writing-block > h2 {
+    margin-top: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 60px;
+    font-weight: bolder;
+    z-index: 2;
+}
+
+.left-side-welcome {
+    margin-left: 30px;
 }

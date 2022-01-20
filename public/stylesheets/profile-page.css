@@ -41,8 +41,31 @@ body{
     color: white;
     border-radius: 50px;
     border: 1px solid black;
+    margin-left: 20px;
+    margin-bottom: 15px;
 }
 
+.writing{
+    margin: 10px 20px;
+    font-weight: bold;
+}
+
+.header-writing{
+    font-weight: bolder;
+}
+
+.exit-button{
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.header-post{
+    display: flex;
+    justify-content: space-between;
+    width: 298px;
+}
 .nav-display{
     display: flex;
     align-items: center;
