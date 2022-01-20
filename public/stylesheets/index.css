@@ -109,11 +109,11 @@ h1.large-font {
 }
 
 .left-side-welcome {
-    margin-left: 30px;
+    margin-left: 90px;
 }
 
 .posts-block {
-    padding: 56px;
+    padding: 90px;
 }
 
 .post-box {
@@ -147,6 +147,11 @@ h1.large-font {
     margin: 0;
     font-size: 22px;
 }
+
+/* .post-content-box {
+    max-width: 600px;
+    max-height: 100px;
+} */
 
 .post-content {
     margin-top: 8px;
