@@ -100,8 +100,17 @@
     background-color: black;
 }
 
+.other-container {
+    display: flex;
+}
+
 .cancel-button {
     background-color: rgba(255, 0, 0, 0.794);
+}
+
+.cancel-button-link {
+    text-decoration: none;
+    font-size: 1em;
 }
 
 .demo-button {
