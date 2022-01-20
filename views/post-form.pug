@@ -12,6 +12,7 @@ block content
                             h1.large-font #{user.username} writing in progress...
                         div.nav-button
                             button(type='submit' class='post-button') Publish
+                            button(type='button' class='cancel-button'): a(class='cancel-link' href=`/user/${user.id}`) Cancel
                             img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
             .login-container
                 div.error-container
