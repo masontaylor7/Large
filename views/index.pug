@@ -15,7 +15,8 @@ block content
         h1.large-font Large
     .button-container
       if (isLoggedIn)
-        button(type='button' class='logout-button' href='/users/logout') Log Out
+        form(action="/logout" method="post")
+          button(class='logout-button') Log Out
       else
         a(type='button' class='login-button' href='/login') Sign In
         button(type='button' class='signup-button' href='/signup') Get Started
@@ -33,10 +34,10 @@ block content
     each post in posts
       .post-box
         .post-author
-          p= post.User.username
-        .post-title
-          p= post.title
-        .post-content
-          p= post.content
-        .post-date
-          p= post.createdAt
+          img(src='./imgs/profile-icon.png' class= "profile-img-small")
+          p.post-username= post.User.username
+        p.post-title= post.title
+        .post-content-box
+          p.post-content= post.content
+        .post-footer
+          p.post-date= postDate(post.createdAt)

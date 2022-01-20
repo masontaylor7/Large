@@ -21,7 +21,7 @@ block content
                 label(for="password" class='font') Password
                 input(type='text' name='password' class='password-input inp')
             .button-container
-                button(class='cancel-button'): a(class='cancel-button-link' href='/') Cancel
+                a(href='/' class="cancel-button-link"): button(type='button' class='cancel-button') Cancel
                 button(type='submit' class='login-button') Log-In
         .demo-button-container
             form(action='/login' method='post')
