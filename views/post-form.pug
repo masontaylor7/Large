@@ -1,0 +1,25 @@
+extends layout.pug
+
+append head
+    link(rel='stylesheet' href='/stylesheets/post-form.css')
+
+block content
+        form(action='/posts' method='post')
+            .nav-bar
+                div.nav-display
+                        .medium-img
+                            img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+                            h1.large-font #{user.username} writing in progress...
+                        div.nav-button
+                            button(type='submit' class='post-button') Publish
+                            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+            .login-container
+                div.error-container
+                    ul
+                    if errors
+                        each error in errors
+                            li.list=error
+            .inner-container
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type="text" name='title' class='title-input' placeholder='Title')
+                input(type='text' name='content' placeholder='Share your experiences...' class='password-input inp')

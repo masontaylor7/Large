@@ -45,6 +45,10 @@ body{
     margin-bottom: 15px;
 }
 
+.post-link-button{
+    text-decoration: none;
+}
+
 .writing{
     margin: 10px 20px;
     font-weight: bold;
