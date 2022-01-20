@@ -6,6 +6,7 @@ const { asyncHandler } = require('./utils')
 /* GET home page. */
 router.get('/', asyncHandler(async(req, res, next) => {
   const isLoggedIn = res.locals.verified;
+  console.log("isLoggedIn: ", isLoggedIn);
   let posts;
   if (isLoggedIn) {
     // Change to get all posts from people user follows
