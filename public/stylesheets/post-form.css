@@ -1,0 +1,102 @@
+body{
+    margin: 15px 100px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.nav-display{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.medium-img{
+    display: flex;
+    align-items: center;
+}
+
+.large-font{
+    font-size: 20px;
+    color: grey;
+    margin-left: 15px;
+}
+.nav-button{
+    display: flex;
+    align-items: center;
+}
+
+.profile-img{
+    width: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid rgb(212, 212, 212);
+    margin-left: 10px;
+}
+
+.post-button{
+    height: 30px;
+    width: 75px;
+    background-color: rgb(56, 155, 53);
+    color: white;
+    border-radius: 50px;
+    border: none;
+}
+
+.cancel-button{
+    height: 30px;
+    width: 75px;
+    background-color: rgb(107, 33, 33);
+    color: white;
+    border-radius: 50px;
+    border: none;
+    margin-left: 10px;
+}
+
+.cancel-link{
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.medium-img {
+    height: 45px;
+}
+.inner-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.title-input{
+    height: 50px;
+    font-size: 50px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.password-input{
+    margin-top: 20px;
+    position: relative;
+    height: 200px;
+    font-size: 20px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.login-container {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+
+    margin: 40px 30px;
+    background-color: rgba(235, 109, 109, 0.794);
+    border-radius: 10px;
+    width: 25rem;
+    text-decoration: none;
+
+ }
+
+ .list{
+    padding: 5px;
+}
