@@ -99,6 +99,10 @@ h1 {
     margin-left: 5px;
 }
 
+.comment-button:hover {
+    cursor: pointer;
+}
+
 .edit-button {
     margin-right: 10px;
     height: 30px;
@@ -152,4 +156,24 @@ h1 {
     margin-left: 5px;
     color: rgba(255, 255, 255, 0.952);
     font-size: 25px;
+}
+
+.comments-sidebar {
+    height: 100%;
+    width: 400px;
+    background-color: red;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    box-shadow: -10px 0px 15px rgba(0, 0, 0, 0.212);
+    display: flex;
+}
+
+.main-body {
+    margin-bottom: 100px;
+}
+
+.x-image {
+    width: 15px;
 }
