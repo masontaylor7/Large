@@ -1,6 +1,5 @@
 body{
-    max-width: 1000px;
-    margin: auto;
+    margin: 15px 100px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -65,4 +64,39 @@ body{
 .inner-container{
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+}
+
+.title-input{
+    height: 50px;
+    font-size: 50px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.password-input{
+    margin-top: 20px;
+    position: relative;
+    height: 200px;
+    font-size: 20px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.login-container {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+
+    margin: 40px 30px;
+    background-color: rgba(235, 109, 109, 0.794);
+    border-radius: 10px;
+    width: 25rem;
+    text-decoration: none;
+
+ }
+
+ .list{
+    padding: 5px;
 }
