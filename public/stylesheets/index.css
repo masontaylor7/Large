@@ -120,6 +120,10 @@ h1.large-font {
     margin-bottom: 50px;
 }
 
+.post-link {
+    text-decoration: none;
+}
+
 .profile-img-small{
     width: 20px;
     background-color: transparent;

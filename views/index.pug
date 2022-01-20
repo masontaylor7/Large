@@ -19,7 +19,7 @@ block content
           button(class='logout-button') Log Out
       else
         a(type='button' class='login-button' href='/login') Sign In
-        button(type='button' class='signup-button' href='/signup') Get Started
+        a(href='/signup'): button(type='button' class='signup-button') Get Started
   .welcome-block
     .left-side-welcome
       .writing-block
@@ -27,12 +27,12 @@ block content
       .smaller-text
         p It's easy to bla bla bla
       .start-writing-container
-        button(class='start-writing-button'): a(href="/login" class='start-writing-text') Start Writing
+        a(href='/login' class="start-writing-text"): button(type='button' class='start-writing-button') Start Writing
     .right-side-welcome
       img(src='./imgs/medium-welcome-snip.JPG' class='quote-img')
   .posts-block
     each post in posts
-      .post-box
+      a(href=`/posts/${post.id}` class="post-link"): div.post-box
         .post-author
           img(src='./imgs/profile-icon.png' class= "profile-img-small")
           p.post-username= post.User.username
