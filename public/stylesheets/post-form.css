@@ -27,7 +27,7 @@ body{
 }
 
 .profile-img{
-    width: 30px;
+    width: 50px;
     background-color: transparent;
     border-radius: 50%;
     border: 1px solid rgb(212, 212, 212);
@@ -35,7 +35,7 @@ body{
 }
 
 .post-button{
-    height: 25px;
+    height: 30px;
     width: 75px;
     background-color: rgb(56, 155, 53);
     color: white;
@@ -43,8 +43,22 @@ body{
     border: none;
 }
 
+.cancel-button{
+    height: 30px;
+    width: 75px;
+    background-color: rgb(107, 33, 33);
+    color: white;
+    border-radius: 50px;
+    border: none;
+    margin-left: 10px;
+}
+
+.cancel-link{
+    text-decoration: none;
+}
+
 .medium-img {
-    height: 25px;
+    height: 45px;
 }
 .inner-container{
     display: flex;
