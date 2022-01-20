@@ -10,11 +10,15 @@ router.post('/logout', (req, res) => {
 })
 
 
-router.get('/:id', asyncHandler(async(req, res, next) => {
-    const user = await db.Post.findByPk(req.params.id, {
-        include: db.Post
+router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+    const userId = parseInt(req.params.id, 10);
+    console.log(userId)
+    const user = await db.Post.findAll({
+        include: [db.User],
+        where: {
+            userId
+        }
     });
-
     
     res.render('profile-page', { user })
 }));

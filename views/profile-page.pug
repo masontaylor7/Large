@@ -1,0 +1,43 @@
+extends layout.pug
+
+append head
+    link(rel='stylesheet' href='/stylesheets/profile-page.css')
+
+block content
+    .nav-bar
+        div.nav-display
+            .medium-img
+                img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            h1.large-font Large
+        div.nav-display
+            button(type='submit' class='logout-button') Log-Out
+            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+    .total-content
+        .content
+            div
+                img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+
+            div
+                p Following
+
+            each post in user
+                div.post-user
+                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-post')
+                    p.user-name=post.User.username
+
+                div
+                    h1.post-titles=post.title
+                    p=post.content
+                    div
+                        p=value=post.createdAt
+            div.caught-up
+                img(src='https://www.freeiconspng.com/uploads/check-mark-icon-21.png' class='caughtup-img')
+                p You're all caught up!
+
+        .side-content
+            .box-post
+                p Writing on Large
+                p New gamer-writer FRQ
+                p Expert gaming advice
+                p Grow your gamership
+                button.post-button Start writing
