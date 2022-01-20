@@ -17,7 +17,7 @@ block content
                 .username-and-time
                     img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-2')
                     a(href='/posts' class='small-username')= post.User.username
-                    p(class='date')= post.createdAt
+                    p(class='date')= postDate(post.createdAt)
                 .post-contents
                     p= post.content
             .lower-post-nav
