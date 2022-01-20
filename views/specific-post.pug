@@ -2,32 +2,35 @@ extends layout.pug
 
 append head
     link(rel='stylesheet' href='/stylesheets/specific-post.css')
+    script(src="/javascripts/specific-post.js" type="module" defer)
 
 block content
-    .nav-bar
-        .name-block-left
-            a(href='/posts' class='author-name')= post.User.username
-        .icon-block-right
-            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-1')
-            img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
-    .main-body
-        .post-block
-            .title-img-content
-                h1= post.title
-                .username-and-time
-                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-2')
-                    a(href='/posts' class='small-username')= post.User.username
-                    p(class='date')= postDate(post.createdAt)
-                .post-contents
-                    p= post.content
-            .lower-post-nav
-                .lower-post-nav-left
-                    img(src='https://topmediumstories.com/clap.png' class='clap-img')
-                    img(src='https://static.thenounproject.com/png/3460458-200.png' class='comment-button')
-                .lower-post-nav-right
-                    button(class='edit-button'): a(href='/posts' class='edit-text') Edit
-                    button(class='delete-button') Delete
-    .footer
-        .footer-left-block
-            img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
-            p(class='footer-large-font') Large
+    .total-body
+        .change-opacity
+            .nav-bar
+                .name-block-left
+                    a(href='/posts' class='author-name')= post.User.username
+                .icon-block-right
+                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-1')
+                    img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            .main-body
+                .post-block
+                    .title-img-content
+                        h1= post.title
+                        .username-and-time
+                            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-2')
+                            a(href='/posts' class='small-username')= post.User.username
+                            p(class='date')= postDate(post.createdAt)
+                        .post-contents
+                            p= post.content
+                    .lower-post-nav
+                        .lower-post-nav-left
+                            img(src='https://topmediumstories.com/clap.png' class='clap-img')
+                            img(src='https://static.thenounproject.com/png/3460458-200.png' class='comment-button')
+                        .lower-post-nav-right
+                            button(class='edit-button'): a(href='/posts' class='edit-text') Edit
+                            button(class='delete-button') Delete
+            .footer
+                .footer-left-block
+                    img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
+                    p(class='footer-large-font') Large
