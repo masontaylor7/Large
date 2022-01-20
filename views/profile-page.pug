@@ -1,0 +1,37 @@
+extends layout.pug
+
+append head
+    link(rel='stylesheet' href='/stylesheets/profile-page.css')
+
+block content
+    .nav-bar
+        div.nav-display
+            img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            h1 Large
+        div.nav-display
+            button(type='submit' class='logout-button') Log-Out
+            img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
+
+    div
+        div
+            img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
+
+        div
+            p Following
+
+        each post in user
+            div
+                img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
+                p=post.User.username
+
+            div
+                h2=post.title
+                p=post.content
+                div
+                    p=value=post.createdAt.getMinutes()
+                    p minutes
+
+
+    div
+        img(src='https://www.clipartmax.com/png/small/5-57782_circle-with-a-check-mark.png')
+        p You're all caught up!
