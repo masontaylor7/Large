@@ -6,32 +6,38 @@ append head
 block content
     .nav-bar
         div.nav-display
-            img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
-            h1 Large
+            .medium-img
+                img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            h1.large-font Large
         div.nav-display
             button(type='submit' class='logout-button') Log-Out
-            img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
-
-    div
-        div
-            img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
-
-        div
-            p Following
-
-        each post in user
+            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+    .total-content
+        .content
             div
-                img(src='https://www.pikpng.com/pngl/m/16-168770_user-iconset-no-profile-picture-icon-circle-clipart.png' class='profile-img')
-                p=post.User.username
+                img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
 
             div
-                h2=post.title
-                p=post.content
+                p Following
+
+            each post in user
+                div.post-user
+                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-post')
+                    p.user-name=post.User.username
+
                 div
-                    p=value=post.createdAt.getMinutes()
-                    p minutes
+                    h1.post-titles=post.title
+                    p=post.content
+                    div
+                        p=value=post.createdAt
+            div.caught-up
+                img(src='https://www.freeiconspng.com/uploads/check-mark-icon-21.png' class='caughtup-img')
+                p You're all caught up!
 
-
-    div
-        img(src='https://www.clipartmax.com/png/small/5-57782_circle-with-a-check-mark.png')
-        p You're all caught up!
+        .side-content
+            .box-post
+                p Writing on Large
+                p New gamer-writer FRQ
+                p Expert gaming advice
+                p Grow your gamership
+                button.post-button Start writing
