@@ -324,13 +324,22 @@ h1 {
     position: relative;
 }
 
-
 .delete-button-small {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 15px;
+    margin-right: 8px;
 }
 
 .edit-button-small {
     height: 20px;
     width: 20px;
+    margin-right: 5px;
+
+}
+
+.edit-button-small:hover,
+.delete-button-small:hover,
+.x-image:hover,
+.comment-submit-button:hover {
+    cursor:pointer
 }
