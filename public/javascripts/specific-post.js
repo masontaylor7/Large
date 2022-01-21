@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             console.log("commentContent is ", commentContent.value);
         commentSubmitButton.addEventListener("click", async (event) =>{
             // console.log(JSON.stringify(commentContent.value));
-            let res = await fetch(`/posts/${id}/`, {
+            let res = await fetch(`/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -122,6 +122,17 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         deleteComment.addEventListener("click", (event) => {
             const commentId =
         });
+
+
+
+
+        const editButton = document.querySelector('.edit-button-small');
+        editButton.addEventListener('click', async(event)=> {
+            const res = await fetch()
+        })
+
+
+
     });
 })
 
