@@ -7,30 +7,33 @@ block content
     .nav-bar
         div.nav-display
             .medium-img
-                img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
-            h1.large-font Large
+                a(href='/'): img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            a(href='/' class="large-font") Large
         div.nav-display
             form(action="/logout" method="post")
                 button(type='submit' class='logout-button') Log-Out
             img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
     .total-content
         .content
-            div
-                img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+            .your-post-block
+                div
+                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
 
-            div
-                h2.your-post-title Your Post
+                div
+                    h2.your-post-title Your Posts
 
             each post in user
                 div.post-user
                     img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-post')
                     p.user-name=post.User.username
 
-                div
-                    h1.post-titles=post.title
-                    p=post.content
+
+
+                a(href=`/posts/${post.id}` class="post-link"): div.post-box
+                    h1.post-titles.post-link=post.title
+                    p.post-link=post.content
                     div
-                        p=value=post.createdAt
+                        p.post-link= postDate(post.createdAt)
             div.caught-up
                 img(src='https://www.freeiconspng.com/uploads/check-mark-icon-21.png' class='caughtup-img')
                 p You're all caught up!

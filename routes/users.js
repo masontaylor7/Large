@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
-const { asyncHandler } = require('./utils');
+const { asyncHandler, getDate } = require('./utils');
 const { logoutUser } = require('../auth');
 
 router.post('/logout', (req, res) => {
@@ -10,7 +10,8 @@ router.post('/logout', (req, res) => {
 })
 
 
-router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    const postDate = getDate;
     const userId = parseInt(req.params.id, 10);
     console.log(userId)
     const user = await db.Post.findAll({
@@ -19,8 +20,11 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
             userId
         }
     });
-    
-    res.render('profile-page', { user })
+
+    res.render('profile-page', {
+        user,
+        postDate
+    })
 }));
 
 

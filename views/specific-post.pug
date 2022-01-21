@@ -11,8 +11,8 @@ block content
                 .name-block-left
                     a(href='/posts' class='author-name')= post.User.username
                 .icon-block-right
-                    img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-1')
-                    img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+                    a(href=`/users/${user}`): img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-1')
+                    a(href='/'): img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
             .main-body
                 .post-block
                     .title-img-content

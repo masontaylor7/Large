@@ -49,9 +49,25 @@ app.use('/logout', logoutRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postRouter);
 
+app.use((req, res, next) => {
+  const e = new Error('The request couldn\'t be found')
+  e.status = 404
+  next(e)
+})
+
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+app.use(function (err, req, res, next) {
+  if (err.status === 404) {
+    console.log("any random string")
+    res.status(404);
+    res.render('404', {
+      title: 'Page Not Found',
+    });
+  } else {
+    console.log("any random string 2")
+
+    next(err);
+  }
 });
 
 // error handler
@@ -64,5 +80,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

@@ -12,12 +12,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         include: [db.User],
     });
     res.render('specific-post', {
+        user: req.session.auth.userId,
         post,
         postDate
     })
 }));
 
-router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res, next) => {
+router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
     const user = await db.User.findOne({
         where:{
             id: req.session.auth.userId
@@ -26,7 +27,9 @@ router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res, next) 
 
     res.render('post-form', {
         csrfToken: req.csrfToken(),
-        title: 'Post Form'
+        title: 'Post Form',
+        postDate,
+        user
     });
 }));
 
@@ -75,7 +78,7 @@ router.post('/edit/:id/', (req, res) => {
 
 });
 
-router.
+
 
 
 
