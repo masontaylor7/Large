@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
+const commentRouter = require('./routes/comments');
 const postRouter = require('./routes/posts');
 const { superSecret }  = require('./config');
 const { restoreUser } = require('./auth');
@@ -47,11 +48,10 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/users', usersRouter);
-app.use((req, res, next) => {
-  console.log("this is before posts router")
-  next();
-});
+app.use('/comments', commentRouter);
 app.use('/posts', postRouter);
+
+
 
 app.use((req, res, next) => {
   const e = new Error('The request couldn\'t be found')
