@@ -6,6 +6,14 @@
     border-bottom: 1px solid black;
 }
 
+.a-tag {
+    text-decoration: none;
+}
+
+.a-tag:hover {
+    cursor: pointer;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -22,3 +30,58 @@
     margin-left: 5px;
 }
 
+.main-body {
+    background-image: linear-gradient(rgb(255,192,23), black) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.error-message-box {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1;
+}
+
+.four-error {
+    margin-right: 10px;
+}
+
+.dead-face {
+    height: 60px;
+    width: 60px;
+}
+
+.game-over-box {
+    margin-top: 25px;
+    box-shadow: 10px 10px 10px red,
+    -10px -10px 30px blue;;
+}
+
+.game-over-img {
+    height: 600px;
+    width: 600px;
+    margin-top: -150px;
+    margin-bottom: -150px;
+    z-index: 0
+
+}
+
+.home-option {
+    color: white;
+    text-decoration: none;
+}
+
+.small-link-box {
+    margin-top: 15px;
+}
+
+.font {
+    font-weight: bold;
+}
