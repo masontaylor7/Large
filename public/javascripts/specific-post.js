@@ -97,19 +97,30 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             user = await user.json();
             const newCommentDiv = document.createElement('div');
                 newCommentDiv.classList.add('single-comment-div');
+                newCommentDiv.id = `${comment.id}`;
                 const date = getDate(new Date(comment.updatedAt));
                 newCommentDiv.innerHTML = `
                     <div class="comment-author-container">
-                        <img src="../imgs/profile-icon.png" class="comment-user-image">
-                        <div class="comment-author-text">
-                            <p class="comment-username">${user.username}</p>
-                            <p class="comment-date">${date}</p>
+                        <div class="main-comment-intro">
+                            <img src="../imgs/profile-icon.png" class="comment-user-image">
+                            <div class="comment-author-text">
+                                <p class="comment-username">${user.username}</p>
+                                <p class="comment-date">${date}</p>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <img src="../imgs/edit-97.png" class="edit-button-small">
+                            <img src="../imgs/delete-button-pngrepo-com.png" class="delete-button-small" id="delete-${comment.id}">
                         </div>
                     </div>
                     <p class="comment-text">${comment.content}</p>
                 `;
                 lowerCommentSection.prepend(newCommentDiv);
                 commentContent.value = "";
+        });
+        const deleteComment = document.querySelector(".delete-button-small");
+        deleteComment.addEventListener("click", (event) => {
+            const commentId =
         });
     });
 })
