@@ -6,18 +6,26 @@ const { loginUser, requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
-    const userId = req.session.auth.userId
-    const postDate = getDate;
-    const postId = parseInt(req.params.id, 10);
-    const post = await db.Post.findByPk(postId, {
-        include: [db.User],
-    });
-    res.render('specific-post', {
-        user: req.session.auth.userId,
-        userId,
-        post,
-        postDate
-    })
+
+        const userId = req.session.auth.userId
+        const postDate = getDate;
+        const postId = parseInt(req.params.id, 10);
+        const post = await db.Post.findByPk(postId, {
+            include: [db.User],
+        });
+    if (post) {
+        res.render('specific-post', {
+            user: req.session.auth.userId,
+            userId,
+            post,
+            postDate
+        })
+    } else {
+        const error = new Error()
+        error.status = 404
+        next(error)
+    }
+
 }));
 
 router.post('/:id(\\d+)', asyncHandler(async(req, res) => {
