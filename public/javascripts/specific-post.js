@@ -73,65 +73,32 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 body: JSON.stringify({ comment: commentContent.value })
             });
             // const res = await fetch(`${fetchUrl}`);
+            console.log(res);
             const comment = await res.json();
-            const result = await fetch(`${fetchUrl}`, ({
-                where: {
-                    id: comment.id
-                }
-            }));
-            const newComment = await result.json();
+            console.log(comment);
+            // const result = await fetch(`${fetchUrl}`, ({
+            //     where: {
+            //         id: comment.id
+            //     }
+            // }));
+            // const newComment = await result.json();
+            let user = await fetch(`/users`);
+            user = await user.json();
             const newCommentDiv = document.createElement('div');
                 newCommentDiv.classList.add('single-comment-div');
-                const date = getDate(new Date(newComment.updatedAt));
+                const date = getDate(new Date(comment.updatedAt));
                 newCommentDiv.innerHTML = `
                     <div class="comment-author-container">
                         <img src="../imgs/profile-icon.png" class="comment-user-image">
                         <div class="comment-author-text">
-                            <p class="comment-username">${newComment.User.username}</p>
+                            <p class="comment-username">${user.username}</p>
                             <p class="comment-date">${date}</p>
                         </div>
                     </div>
-                    <p class="comment-text">${newComment.content}</p>
+                    <p class="comment-text">${comment.content}</p>
                 `;
                 lowerCommentSection.prepend(newCommentDiv);
-            // comments.forEach((comment) => {
-            //     const singleCommentDiv = document.createElement('div');
-            //     singleCommentDiv.classList.add('single-comment-div');
-            //     const date = getDate(new Date(comment.updatedAt));
-            //     singleCommentDiv.innerHTML = `
-            //         <div class="comment-author-container">
-            //             <img src="../imgs/profile-icon.png" class="comment-user-image">
-            //             <div class="comment-author-text">
-            //                 <p class="comment-username">${comment.User.username}</p>
-            //                 <p class="comment-date">${date}</p>
-            //             </div>
-            //         </div>
-            //         <p class="comment-text">${comment.content}</p>
-            //     `;
-            //     lowerCommentSection.append(singleCommentDiv);
-            // });
-            // console.log("After fetch, res is ", res);
-            // res = res.body;
-            // console.log("res body is ", res);
-            // window.location.href = `/posts/${id}`
-            // res = await res.text();
-            // console.log("res is ", res);
-            // const newComment = await res.json();
-            // console.log("new comment is ", newComment);
-            // const newCommentDiv = document.createElement('div');
-            //     newCommentDiv.classList.add('single-comment-div');
-            //     const date = getDate(new Date(newComment.updatedAt));
-            //     newCommentDiv.innerHTML = `
-            //         <div class="comment-author-container">
-            //             <img src="../imgs/profile-icon.png" class="comment-user-image">
-            //             <div class="comment-author-text">
-            //                 <p class="comment-username">username</p>
-            //                 <p class="comment-date">${date}</p>
-            //             </div>
-            //         </div>
-            //         <p class="comment-text">${newComment.content}</p>
-            //     `;
-            //     commentDiv.append(newCommentDiv);
+                commentContent.value = "";
         });
     });
 })

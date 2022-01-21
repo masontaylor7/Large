@@ -32,6 +32,11 @@ router.post('/:id(\\d+)', asyncHandler(async(req, res) => {
             userId
         });
         await newComment.save();
+        // console.log(newComment);
+        const user = await db.User.findOne({
+            where: { id : userId }
+        });
+        newComment.username = user.username;
         console.log(newComment);
         res.json(newComment);
     } catch (e) {
