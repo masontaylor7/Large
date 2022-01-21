@@ -16,7 +16,9 @@ block content
     .button-container
       if (isLoggedIn)
         form(action="/logout" method="post")
-          button(class='logout-button') Log Out
+          button(class='logout-button') Log-Out
+        div
+          a(href=`/users/${user}`): img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
       else
         a(type='button' class='login-button' href='/login') Sign In
         a(href='/signup'): button(type='button' class='signup-button') Get Started

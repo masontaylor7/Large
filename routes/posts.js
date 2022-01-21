@@ -13,6 +13,7 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
         include: [db.User],
     });
     res.render('specific-post', {
+        user: req.session.auth.userId,
         userId,
         post,
         postDate
@@ -53,7 +54,9 @@ router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res, next) 
 
     res.render('post-form', {
         csrfToken: req.csrfToken(),
-        title: 'Post Form'
+        title: 'Post Form',
+        postDate,
+        user
     });
 }));
 

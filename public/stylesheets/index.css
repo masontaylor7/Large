@@ -37,7 +37,7 @@ h1.large-font {
 }
 
 .logout-button {
-    margin-right: 50px;
+    margin-right: 10px;
     height: 40px;
     width: 100px;
     min-width: none;
@@ -118,6 +118,19 @@ h1.large-font {
 
 .post-box {
     margin-bottom: 50px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img{
+    width: 50px;
+    margin-right: 40px;
+    margin-left: 12px;
+    background-color: transparent;
+    border-radius: 50%;
 }
 
 .post-link {

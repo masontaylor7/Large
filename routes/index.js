@@ -9,11 +9,13 @@ router.get('/', asyncHandler(async(req, res, next) => {
   const postDate = getDate;
   console.log("isLoggedIn: ", isLoggedIn);
   let posts;
+  let user;
   if (isLoggedIn) {
     // Change to get all posts from people user follows
     posts = await db.Post.findAll({
       include: 'User'
     });
+    user = req.session.auth.userId
   } else {
     posts = await db.Post.findAll({
       include: 'User'
@@ -23,6 +25,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
   res.render('index', {
     title: 'Large Home Page',
     isLoggedIn,
+    user,
     posts,
     postDate
   });
