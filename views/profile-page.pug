@@ -10,7 +10,8 @@ block content
                 img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
             h1.large-font Large
         div.nav-display
-            button(type='submit' class='logout-button') Log-Out
+            form(action="/logout" method="post")
+                button(type='submit' class='logout-button') Log-Out
             img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
     .total-content
         .content

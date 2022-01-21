@@ -67,6 +67,16 @@ router.post('/', csrfProtection, postFormValidations, asyncHandler(async(req, re
 
 }));
 
+router.get('/edit/:id/', (req, res) => {
+
+});
+
+router.post('/edit/:id/', (req, res) => {
+
+});
+
+router.
+
 
 
 
