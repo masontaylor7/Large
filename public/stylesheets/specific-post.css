@@ -217,7 +217,6 @@ h1 {
     justify-content: flex-end;
 }
 
-<<<<<<< HEAD
 .lower-comment-section {
     height: 1fr;
     padding: 20px;
@@ -264,9 +263,9 @@ h1 {
 .comment-text {
     font-size: 14px;
     margin: 4px;
-=======
+}
 
-.delete-form{
+.delete-form {
     background-color: white;
     width: 400px;
     height: 350px;
@@ -317,5 +316,4 @@ h1 {
 
 .change-opacity{
     position: relative;
->>>>>>> main
 }
