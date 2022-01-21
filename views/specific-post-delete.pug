@@ -9,7 +9,7 @@ block content
         .change-opacity
             .nav-bar
                 .name-block-left
-                    a(href='/posts' class='author-name')= post.User.username
+                    a(href=`/users/${post.userId}` class='author-name')= post.User.username
                 .icon-block-right
                     img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-1')
                     img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')

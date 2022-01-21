@@ -55,7 +55,6 @@ router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res, next) 
     res.render('post-form', {
         csrfToken: req.csrfToken(),
         title: 'Post Form',
-        postDate,
         user
     });
 }));
