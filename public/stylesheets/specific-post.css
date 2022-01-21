@@ -230,9 +230,15 @@ h1 {
     padding: 4px;
 }
 
+.main-comment-intro {
+    display: flex;
+    align-items: center;
+}
+
 .comment-author-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .comment-user-image {
@@ -316,4 +322,15 @@ h1 {
 
 .change-opacity{
     position: relative;
+}
+
+
+.delete-button-small {
+    height: 20px;
+    width: 20px;
+}
+
+.edit-button-small {
+    height: 20px;
+    width: 20px;
 }

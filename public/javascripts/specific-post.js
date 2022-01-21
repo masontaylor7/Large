@@ -48,12 +48,18 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 const singleCommentDiv = document.createElement('div');
                 singleCommentDiv.classList.add('single-comment-div');
                 const date = getDate(new Date(comment.updatedAt));
-                singleCommentDiv.innerHTML = `
+            singleCommentDiv.innerHTML = `
                     <div class="comment-author-container">
-                        <img src="../imgs/profile-icon.png" class="comment-user-image">
-                        <div class="comment-author-text">
-                            <p class="comment-username">${comment.User.username}</p>
-                            <p class="comment-date">${date}</p>
+                        <div class="main-comment-intro">
+                            <img src="../imgs/profile-icon.png" class="comment-user-image">
+                            <div class="comment-author-text">
+                                <p class="comment-username">${comment.User.username}</p>
+                                <p class="comment-date">${date}</p>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <img src="../imgs/edit-97.png" class="edit-button-small">
+                            <img src="../imgs/delete-button-pngrepo-com.png" class="delete-button-small">
                         </div>
                     </div>
                     <p class="comment-text">${comment.content}</p>
