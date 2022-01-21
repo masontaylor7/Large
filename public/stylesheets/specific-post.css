@@ -217,6 +217,7 @@ h1 {
     justify-content: flex-end;
 }
 
+<<<<<<< HEAD
 .lower-comment-section {
     height: 1fr;
     padding: 20px;
@@ -263,4 +264,58 @@ h1 {
 .comment-text {
     font-size: 14px;
     margin: 4px;
+=======
+
+.delete-form{
+    background-color: white;
+    width: 400px;
+    height: 350px;
+    border: solid grey 1px;
+    margin: auto;
+    box-shadow: 0 0 10px 5px grey;
+    border-radius: 25px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.question{
+    font-weight: bolder;
+    font-size: 40px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.buttons-section{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cancel-button{
+    height: 30px;
+    width: 60px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    border: 1px solid black;
+
+}
+
+.cancel-link{
+    text-decoration: none;
+    text-align: center;
+}
+
+.change-opacity{
+    position: relative;
+>>>>>>> main
 }
