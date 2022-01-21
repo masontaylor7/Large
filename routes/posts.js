@@ -5,13 +5,15 @@ const { check, validationResult, Result } = require('express-validator');
 const { loginUser, requireAuth } = require('../auth');
 const router = express.Router();
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
+    const userId = req.session.auth.userId
     const postDate = getDate;
     const postId = parseInt(req.params.id, 10);
     const post = await db.Post.findByPk(postId, {
         include: [db.User],
     });
     res.render('specific-post', {
+        userId,
         post,
         postDate
     })
@@ -67,16 +69,81 @@ router.post('/', csrfProtection, postFormValidations, asyncHandler(async(req, re
 
 }));
 
-router.get('/edit/:id/', (req, res) => {
+router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async(req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const post = await db.Post.findByPk(postId, {
+        include: db.User
+    });
 
-});
+    res.render('post-edit', {
+      title: 'Edit Post',
+      post,
+      csrfToken: req.csrfToken(),
+    });
+}));
 
-router.post('/edit/:id/', (req, res) => {
+router.post('/:id(\\d+)/edit',csrfProtection, postFormValidations, asyncHandler(async(req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const specificPost = await db.Post.findByPk(postId,{
+        include: db.User
+    });
 
-});
+    const {
+        title,
+        content,
+    } = req.body;
 
-router.
+    const post = {
+        title,
+        content
+    };
 
+    const postErrorsValidators = validationResult(req);
+
+    if (postErrorsValidators.isEmpty()) {
+      await specificPost.update(post);
+      res.redirect(`/posts/${postId}`);
+    } else {
+      const errors = postErrorsValidators.array().map((error) => error.msg);
+      res.render('post-edit', {
+        title: 'Edit Post',
+        post: { id: postId, ...post },
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+}));
+
+router.get('/delete/:id(\\d+)', csrfProtection, asyncHandler(async(req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const userId = req.session.auth.userId
+    const postDate = getDate;
+    const post = await db.Post.findByPk(postId,{
+        include: db.User
+    });
+
+    res.render('specific-post-delete',{
+        userId,
+        post,
+        postDate,
+        csrfToken: req.csrfToken(),
+    });
+
+
+}));
+
+
+router.post('/delete/:id(\\d+)', csrfProtection, asyncHandler(async(req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const specificPost = await db.Post.findByPk(postId,{
+        include: db.User
+    });
+    await specificPost.destroy()
+
+    res.redirect(`/users/${specificPost.userId}`)
+
+
+}));
 
 
 
