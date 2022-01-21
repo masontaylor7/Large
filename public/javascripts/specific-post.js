@@ -41,6 +41,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             ];
             return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
         }
+        const exitButton = document.querySelector('.x-image')
+        exitButton.addEventListener =
         const lowerCommentSection = document.createElement('div');
         lowerCommentSection.classList.add('lower-comment-section');
         commentsSidebar.append(lowerCommentSection);
