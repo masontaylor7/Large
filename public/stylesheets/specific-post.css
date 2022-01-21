@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -172,7 +176,7 @@ h1 {
     z-index: 2;
     box-shadow: -10px 0px 15px rgba(0, 0, 0, 0.212);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .x-image {
@@ -196,6 +200,9 @@ h1 {
 
 .upper-comment-section {
     display: flex;
+    padding-bottom: 15px;
+    background-color: rgb(198, 232, 255);
+    justify-content: center;
 }
 
 .comment-submit-button {
@@ -208,4 +215,52 @@ h1 {
     border-radius: 50px;
     border: 1px solid black;
     justify-content: flex-end;
+}
+
+.lower-comment-section {
+    height: 1fr;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.single-comment-div {
+    background-color: white;
+    margin: 4px 0px;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+.comment-author-container {
+    display: flex;
+    align-items: center;
+}
+
+.comment-user-image {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid rgb(212, 212, 212);
+    margin-right: 10px;
+}
+
+.comment-author-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-username {
+    font-size: 14px;
+    margin: 2px;
+}
+
+.comment-date {
+    font-size: 14px;
+    color: dimgray;
+    margin: 2px;
+}
+
+.comment-text {
+    font-size: 14px;
+    margin: 4px;
 }
