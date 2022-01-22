@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             console.log("commentContent is ", commentContent.value);
         commentSubmitButton.addEventListener("click", async (event) =>{
             // console.log(JSON.stringify(commentContent.value));
-            let res = await fetch(`/comments`, {
+            let res = await fetch(`/posts/${id}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -110,15 +110,27 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 `;
                 lowerCommentSection.prepend(newCommentDiv);
                 commentContent.value = "";
+
+
+
+
+                const editButton = document.querySelector('.edit-button-small');
+                editButton.addEventListener('click', async(event)=> {
+                    const res = await fetch(`/comments/${comment.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ comment: commentContent.value })
+                    })
+
+                    const resBody = await res.json();
+                    console.log(resBody);
+                })
         });
 
 
 
-
-        const editButton = document.querySelector('.edit-button-small');
-        editButton.addEventListener('click', async(event)=> {
-            const res = await fetch()
-        })
 
 
 
