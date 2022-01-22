@@ -55,6 +55,7 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
                 </div>
                 <p class="comment-text" id='text-${comment.id}'>${comment.content}</p>
             `;
+            lowerCommentSection.append(singleCommentDiv);
             if (user.id !== comment.userId){
                 const edit = document.querySelector(`#edit-${comment.id}`);
                 console.log('THIS IS EDIT', edit);
@@ -64,7 +65,7 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
                 edit.classList.add(`hidden-mode`);
                 deleteButton.classList.add(`hidden-mode`);
             }
-            lowerCommentSection.append(singleCommentDiv);
+
         });
         const deleteButtons = document.querySelectorAll(".delete-button-small");
         console.log("deleteButtons, ", deleteButtons)
