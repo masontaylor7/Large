@@ -47,8 +47,7 @@ router.post('/:id(\\d+)', commentValidator, asyncHandler(async(req, res) => {
             postId,
             userId
         });
-        // await newComment.save();
-        // console.log(newComment);
+    
         const user = await db.User.findOne({
             where: { id : userId }
         });

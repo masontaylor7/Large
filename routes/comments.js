@@ -14,17 +14,17 @@ const commentValidator = [
 
 
 router.put('/:id(\\d+)', commentValidator, asyncHandler(async(req, res, next) => {
-    const { content } = req.body;
-    const comment = await db.Comment.findOne({
-        where:{
-            id: req.params.id
-        }
-    })
+    const { comment } = req.body;
+
+    console.log('HELLOOOOO!!!', comment)
+    const specifiComment = await db.Comment.findByPk(req.params.id);
+    console.log(specifiComment);
 
 
-    if(comment){
-        await comment.update({ content })
-        res.json({ comment })
+    if(specifiComment){
+        await specifiComment.update({ content: comment })
+        console.log('UPDATED', specifiComment);
+        res.json({ specifiComment })
     }else{
         const err = new Error();
         err.status(404);
