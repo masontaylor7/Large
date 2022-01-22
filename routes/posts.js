@@ -47,7 +47,7 @@ router.post('/:id(\\d+)', commentValidator, asyncHandler(async(req, res) => {
             postId,
             userId
         });
-    
+
         const user = await db.User.findOne({
             where: { id : userId }
         });
@@ -191,6 +191,16 @@ router.post('/delete/:id(\\d+)', csrfProtection, asyncHandler(async(req, res) =>
     const specificPost = await db.Post.findByPk(postId,{
         include: db.User
     });
+    const comments = await db.Comment.findAll({
+        where: {
+            postId
+        }
+    })
+
+    comments.forEach(async(comment) => {
+        await comment.destroy();
+    })
+
     await specificPost.destroy()
 
     res.redirect(`/users/${specificPost.userId}`)

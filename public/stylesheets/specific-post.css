@@ -343,3 +343,8 @@ h1 {
 .comment-submit-button:hover {
     cursor:pointer
 }
+
+
+.hidden-mode{
+    display: none;
+}
