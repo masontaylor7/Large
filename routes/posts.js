@@ -28,19 +28,26 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
 
 }));
 
-router.post('/:id(\\d+)', asyncHandler(async(req, res) => {
+
+const commentValidator = [
+    check('content')
+        .exists({ checkFalsy: true })
+        .withMessage("Comment can't be empty."),
+]
+
+router.post('/:id(\\d+)', commentValidator, asyncHandler(async(req, res) => {
     try {
     console.log("router");
     console.log(req.body);
         const { comment } = req.body;
         const postId = req.params.id;
         const userId = req.session.auth.userId;
-        const newComment = await db.Comment.build({
+        const newComment = await db.Comment.create({
             content: comment,
             postId,
             userId
         });
-        await newComment.save();
+        // await newComment.save();
         // console.log(newComment);
         const user = await db.User.findOne({
             where: { id : userId }

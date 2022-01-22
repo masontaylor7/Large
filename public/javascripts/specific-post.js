@@ -1,5 +1,8 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
     console.log("hello from javascript!")
+
+
+
     const commentButton = document.querySelector('.comment-button');
     commentButton.addEventListener("click", async (event) => {
         // console.log("Does this work?");
@@ -41,11 +44,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             ];
             return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
         }
-        const exitButton = document.querySelector('.x-image')
-        exitButton.addEventListener("click", (event) => {
-            commentsSidebar.remove();
-            changeOpacity.style.opacity = 1;
-        });
+
         const lowerCommentSection = document.createElement('div');
         lowerCommentSection.classList.add('lower-comment-section');
         commentsSidebar.append(lowerCommentSection);
@@ -71,10 +70,18 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                     <p class="comment-text">${comment.content}</p>
                 `;
                 lowerCommentSection.append(singleCommentDiv);
-            });
-            const commentSubmitButton = document.querySelector('.comment-submit-button');
-            const commentContent = document.getElementById('contentss');
-            console.log("commentContent is ", commentContent.value);
+        });
+
+        const exitButton = document.querySelector('.x-image')
+        exitButton.addEventListener("click", (event) => {
+            commentsSidebar.remove();
+            changeOpacity.style.opacity = 1;
+        });
+
+
+        const commentSubmitButton = document.querySelector('.comment-submit-button');
+        const commentContent = document.getElementById('contentss');
+        console.log("commentContent is ", commentContent.value);
         commentSubmitButton.addEventListener("click", async (event) =>{
             // console.log(JSON.stringify(commentContent.value));
             let res = await fetch(`/posts/${id}`, {
@@ -110,7 +117,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                             </div>
                         </div>
                         <div class="button-container">
-                            <img src="../imgs/edit-97.png" class="edit-button-small">
+                            <img src="../imgs/edit-97.png" class="edit-button-small" id= 'edit-${comment.id}'>
                             <img src="../imgs/delete-button-pngrepo-com.png" class="delete-button-small" id="delete-${comment.id}">
                         </div>
                     </div>
@@ -118,34 +125,76 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 `;
                 lowerCommentSection.prepend(newCommentDiv);
                 commentContent.value = "";
+
+
+
+
+
+
+                const deleteCommentButtons = document.querySelectorAll(".delete-button-small");
+
+                deleteCommentButtons.forEach(button => {
+                    button.addEventListener("click", async(event) => {
+                        let commentId = button.id;
+
+                        commentId = commentId.split("-")[1];
+                        const res = await fetch(`/comments/${commentId}`, {
+                            method: "DELETE"
+                        });
+
+                        const data = await res.json();
+                        if (data.message === "Success!") {
+                            document.getElementById(commentId).remove();
+                        }
+                    });
+                });
         });
-        const deleteCommentButton = document.querySelector(".delete-button-small");
-        console.log(deleteCommentButton);
-        deleteCommentButton.addEventListener("click", async(event) => {
-            let commentId = deleteCommentButton.id;
-            console.log("commentId is ", commentId);
-            commentId = commentId.split("-")[1];
-            const res = await fetch(`/comments/${commentId}`, {
-                method: "DELETE"
+
+
+
+
+        const deleteCommentButtons = document.querySelectorAll(".delete-button-small");
+
+        deleteCommentButtons.forEach(button => {
+            button.addEventListener("click", async(event) => {
+                let commentId = button.id;
+
+                commentId = commentId.split("-")[1];
+                const res = await fetch(`/comments/${commentId}`, {
+                    method: "DELETE"
+                });
+
+                const data = await res.json();
+                if (data.message === "Success!") {
+                    document.getElementById(commentId).remove();
+                }
             });
-            console.log("res is ", res);
-            const data = await res.json();
-            if (data.message === "Success!") {
-                document.getElementById(commentId).remove();
-            }
         });
 
 
 
 
-        // const editButton = document.querySelector('.edit-button-small');
-        // editButton.addEventListener('click', async(event)=> {
-        //     const res = await fetch()
-        // })
 
+                const editButton = document.querySelector('.edit-button-small');
+                editButton.addEventListener('click', async(event)=> {
+                    const commentId = event.id.split('-')[1];
+                    console.log('this worked', commentId)
+                    const res = await fetch(`/comments/${commentId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ comment: commentContent.value })
+                    })
 
-
+                    const resBody = await res.json();
+                    console.log(resBody);
+                })
     });
-})
+
+
+
+
+});
 
 // <input type="hidden" name="_csrf" value="${csrfToken}">
