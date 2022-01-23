@@ -19,7 +19,7 @@ block content
                         h1= post.title
                         .username-and-time
                             img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img-2')
-                            a(href='/posts' class='small-username')= post.User.username
+                            a(href=`/users/${post.userId}` class='small-username')= post.User.username
                             p(class='date')= postDate(post.createdAt)
                         .post-contents
                             p= post.content
@@ -30,7 +30,8 @@ block content
                             if (post.userId === userId)
                                 button(class='edit-button'): a(href=`/posts/${post.id}/edit` class='edit-text') Edit
                                 button(class='delete-button'): a(href=`/posts/delete/${post.id}` class='edit-text') Delete
-            .footer
-                .footer-left-block
-                    img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
-                    p(class='footer-large-font') Large
+            footer
+                .footer
+                    .footer-left-block
+                        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
+                        p(class='footer-large-font') Large

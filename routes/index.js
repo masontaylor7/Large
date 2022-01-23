@@ -13,12 +13,14 @@ router.get('/', asyncHandler(async(req, res, next) => {
   if (isLoggedIn) {
     // Change to get all posts from people user follows
     posts = await db.Post.findAll({
-      include: 'User'
+      include: 'User',
+      order: [['updatedAt', 'DESC']]
     });
     user = req.session.auth.userId
   } else {
     posts = await db.Post.findAll({
-      include: 'User'
+      include: 'User',
+      order: [['updatedAt', 'DESC']]
     });
   }
   // console.clearlog(posts);
