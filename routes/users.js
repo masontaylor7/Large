@@ -27,14 +27,15 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         include: [db.User],
         where: {
             userId
-        }
+        },
+        order: [['updatedAt', 'DESC']]
     });
 
     res.render('profile-page', {
         user,
         postDate
     })
-    
+
 }));
 
 

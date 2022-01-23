@@ -6,7 +6,7 @@ append head
 
 block content
     .total-body
-        .change-opacity
+        .change-opacity(class="half-opacity")
             .nav-bar
                 .name-block-left
                     a(href=`/users/${post.userId}` class='author-name')= post.User.username
@@ -30,15 +30,16 @@ block content
                             if (post.userId === userId)
                                 button(class='edit-button'): a(href=`/posts/${post.id}/edit` class='edit-text') Edit
                                 button(class='delete-button') Delete
-            .footer
-                .footer-left-block
-                    img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
-                    p(class='footer-large-font') Large
-            .delete-form
-                .form-box
-                    form(action=`/posts/delete/${post.id}` method='post')
-                        input(type='hidden' name='_csrf' value=csrfToken)
-                        p.question Are you sure you want to delete?
-                        .buttons-section
-                            a(class='cancel-link' href=`/posts/${post.id}`): button(type='button' class='cancel-button') Cancel
-                            button(type='submit' class='delete-button') Delete
+            footer
+                .footer
+                    .footer-left-block
+                        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img-invert')
+                        p(class='footer-large-font') Large
+    .delete-form
+        .form-box
+            form(action=`/posts/delete/${post.id}` method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                p.question Are you sure you want to delete?
+                .buttons-section
+                    a(class='cancel-link' href=`/posts/${post.id}`): button(type='button' class='cancel-button') Cancel
+                    button(type='submit' class='delete-button') Delete

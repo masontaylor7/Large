@@ -73,7 +73,6 @@ router.post('/', csrfProtection, signupValidators, asyncHandler(async(req, res, 
     if(validationErrors.isEmpty()){
         await user.save();
         loginUser(req, res, user);
-        res.redirect('/')
     }else{
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('sign-up', {
