@@ -22,7 +22,8 @@ router.post('/logout', (req, res) => {
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const postDate = getDate;
     const userId = parseInt(req.params.id, 10);
-    console.log(userId)
+    const currentUser = req.session.auth.userId
+    const userPage = await db.User.findByPk(userId)
     const user = await db.Post.findAll({
         include: [db.User],
         where: {
@@ -30,11 +31,18 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         },
         order: [['updatedAt', 'DESC']]
     });
-
-    res.render('profile-page', {
-        user,
-        postDate
-    })
+    if(userPage){
+        res.render('profile-page', {
+            currentUser,
+            userPage,
+            user,
+            postDate
+        })
+    }else {
+        const error = new Error()
+        error.status = 404
+        next(error)
+    }
 
 }));
 

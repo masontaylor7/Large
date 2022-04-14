@@ -12,7 +12,7 @@ block content
         div.nav-display
             form(action="/logout" method="post")
                 button(type='submit' class='logout-button') Log-Out
-            img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+            a(href=`/users/${currentUser}`): img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
     .total-content
         .content
             .your-post-block
@@ -20,7 +20,7 @@ block content
                     img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
 
                 div
-                    h2.your-post-title Your Posts
+                    h2.your-post-title #{userPage.username} Posts
 
             each post in user
                 div.post-user
