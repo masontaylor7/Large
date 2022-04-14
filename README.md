@@ -1,5 +1,5 @@
 # Large
-Blogging platform for video game enthusiasts.
+Large is a clone of Medium, a blogging platform for video game enthusiasts. Here you are able to make an account and blog about recent games as well as comment on blogs.
 
 ## Technologies
 This app makes use of the following technologies:
