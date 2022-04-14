@@ -42,8 +42,11 @@ npx dotenv sequelize db:seed:all
 14. Navigate to localhost in your browser, specifying the port you used in your .env file.
 
 ## Screenshots
+This is the splash page for the app that users see when they navigate to the site.
 ![image](https://user-images.githubusercontent.com/72574258/163453876-36ecaf7d-4a24-49ef-b2fc-4a5c1e672c4d.png)
+This is the form for creating a post.
 ![image](https://user-images.githubusercontent.com/72574258/163453894-32a5992c-b1a7-4034-b7a0-15966bb6f82b.png)
+When users click the comments icon on a post, a comments sidebar appears.
 ![image](https://user-images.githubusercontent.com/72574258/163453907-67481d57-42bd-4284-8437-930dfd5d58b7.png)
 
 
