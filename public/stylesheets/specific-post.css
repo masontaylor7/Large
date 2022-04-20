@@ -222,7 +222,7 @@ h1 {
 .lower-comment-section {
     height: 1fr;
     padding: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .single-comment-div {
@@ -366,4 +366,11 @@ h1 {
 
 .hidden-mode{
     display: none;
+}
+
+.errors {
+    margin-left: 15px;
+    font-size: small;
+    color: red;
+    padding-top: 15px;
 }

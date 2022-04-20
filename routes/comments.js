@@ -22,9 +22,13 @@ router.put('/:id(\\d+)', commentValidator, asyncHandler(async(req, res, next) =>
 
 
     if(specifiComment){
-        await specifiComment.update({ content: comment })
-        console.log('UPDATED', specifiComment);
-        res.json({ specifiComment })
+        if(comment) {
+            await specifiComment.update({ content: comment })
+            console.log('UPDATED', specifiComment);
+            res.json({ specifiComment })
+        } else {
+            res.json("Comment can't be empty.")
+        }
     }else{
         const err = new Error();
         err.status(404);

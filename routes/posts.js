@@ -30,33 +30,43 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
 
 
 const commentValidator = [
-    check('content')
+    check('comment')
         .exists({ checkFalsy: true })
         .withMessage("Comment can't be empty."),
 ]
 
 router.post('/:id(\\d+)', commentValidator, asyncHandler(async(req, res) => {
-    try {
     console.log("router");
     console.log(req.body);
         const { comment } = req.body;
         const postId = req.params.id;
         const userId = req.session.auth.userId;
-        const newComment = await db.Comment.create({
+        const newComment = await db.Comment.build({
             content: comment,
             postId,
             userId
         });
 
-        const user = await db.User.findOne({
-            where: { id : userId }
-        });
-        newComment.username = user.username;
-        console.log(newComment);
-        res.json(newComment);
-    } catch (e) {
-        console.log(e);
-    }
+        const commentErrors = validationResult(req);
+
+        if (commentErrors.isEmpty()) {
+            const user = await db.User.findOne({
+                where: { id : userId }
+            });
+            newComment.username = user.username;
+            await newComment.save();
+            res.json(newComment);
+        } else {
+            const errors = commentErrors.array().map((error) => error.msg)[0];
+            res.json(errors);
+
+        }
+
+        // console.log(newComment);
+        // res.json(newComment);
+    // } catch (e) {
+    //     console.log(e);
+    // }
 }));
 
 router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res, next) => {

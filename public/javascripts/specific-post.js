@@ -87,6 +87,16 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
             })
 
             const resBody = await res.json();
+            if (resBody === "Comment can't be empty.") {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('errors');
+                errorDiv.innerHTML = resBody;
+                document.querySelector('.form-box').append(errorDiv);
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 3000);
+
+            } else {
 
             const updatedComment = document.querySelector(".comment-submit-button")
             updatedComment.classList.remove('hidden-mode');
@@ -118,12 +128,12 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
 
                 lowerCommentSection.prepend(newCommentDiv);
                 commentContent.value = "";
-                const deleteCommentButtons = document.querySelectorAll(".delete-button-small");
-                deleteComment(deleteCommentButtons);
-                const editButtons = document.querySelectorAll('.edit-button-small');
-                editButtonFunction(editButtons, lowerCommentSection)
+                const deleteCommentButtons = document.querySelector(".delete-button-small");
+                deleteComment([deleteCommentButtons]);
+                const editButtons = document.querySelector('.edit-button-small');
+                editButtonFunction([editButtons], lowerCommentSection)
 
-        });
+        }});
 
         const exitButton = document.querySelector('.x-image')
         exitButton.addEventListener("click", (event) => {
@@ -149,8 +159,21 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
             console.log(res);
             const comment = await res.json();
             console.log(comment);
+            if (comment === "Comment can't be empty.") {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('errors');
+                errorDiv.innerHTML = comment;
+                document.querySelector('.form-box').append(errorDiv);
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 3000);
 
-            const newCommentDiv = document.createElement('div');
+            } else {
+                // const errorDiv = document.querySelector('.errors');
+                // if (errorDiv) {
+                //     errorDiv.remove();
+                // }
+                const newCommentDiv = document.createElement('div');
                 newCommentDiv.classList.add('single-comment-div');
                 newCommentDiv.id = `div-${comment.id}`;
                 const date = getDate(new Date(comment.updatedAt));
@@ -179,14 +202,15 @@ window.addEventListener("DOMContentLoaded", async(event)=>{
 
 
 
-                const deleteCommentButtons = document.querySelectorAll(".delete-button-small");
-                deleteComment(deleteCommentButtons);
+                const deleteCommentButtons = document.querySelector(".delete-button-small");
+                deleteComment([deleteCommentButtons]);
 
 
-                const editButtons = document.querySelectorAll('.edit-button-small');
-                editButtonFunction(editButtons, lowerCommentSection);
-                    });
+                const editButtons = document.querySelector('.edit-button-small');
+                editButtonFunction([editButtons], lowerCommentSection);
+        }});
                 });
+
 });
 
 
@@ -225,6 +249,7 @@ const getDate = (date) => {
 const deleteComment = async (deleteCommentButtons) => {
     deleteCommentButtons.forEach(button => {
         button.addEventListener("click", async(event) => {
+            event.stopPropagation();
             let commentId = button.id;
 
             commentId = commentId.split("-")[1];
@@ -235,11 +260,13 @@ const deleteComment = async (deleteCommentButtons) => {
             const data = await res.json();
 
             if (data.message === "Success!") {
-                document.getElementById(`div-${commentId}`).remove();
+                console.log(document.getElementById(`div-${commentId}`));
+                document.querySelector(`#div-${commentId}`).remove();
             }
         });
     });
-}
+};
+
 
 const editButtonFunction = (editButtons, lowerCommentSection) => {
     editButtons.forEach(editButton => {
