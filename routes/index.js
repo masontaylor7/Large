@@ -33,4 +33,10 @@ router.get('/', asyncHandler(async(req, res, next) => {
   });
 }));
 
+router.get('/about', asyncHandler(async(req, res, next) => {
+  res.render('about', {
+    title: 'About Us'
+  })
+}));
+
 module.exports = router;

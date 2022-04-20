@@ -1,0 +1,25 @@
+extends layout
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+
+block content
+    .nav-bar
+        .logo-container
+            .medium-img
+                img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+            .large-font
+                h1.large-font Large
+        .button-container
+            a(href='/about'): button(type='button' class='about-button') About Us
+            if (isLoggedIn)
+                form(action="/logout" method="post")
+                    button(class='logout-button') Log-Out
+                div
+                    a(href=`/users/${user}`): img(src='https://www.freeiconspng.com/uploads/profile-icon-9.png' class='profile-img')
+            else
+                a(type='button' class='login-button' href='/login') Sign In
+                a(href='/signup'): button(type='button' class='signup-button') Get Started

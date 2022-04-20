@@ -14,6 +14,7 @@ block content
       .large-font
         h1.large-font Large
     .button-container
+      a(href='/about'): button(type='button' class='about-button') About Us
       if (isLoggedIn)
         form(action="/logout" method="post")
           button(class='logout-button') Log-Out
@@ -22,6 +23,7 @@ block content
       else
         a(type='button' class='login-button' href='/login') Sign In
         a(href='/signup'): button(type='button' class='signup-button') Get Started
+
   .welcome-block
     .left-side-welcome
       .writing-block

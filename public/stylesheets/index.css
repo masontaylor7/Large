@@ -36,6 +36,17 @@ h1.large-font {
     border: 1px;
 }
 
+.about-button {
+    margin-right: 30px;
+    height: 40px;
+    width: 100px;
+    min-width: none;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: 1px;
+}
+
 .logout-button {
     margin-right: 10px;
     height: 40px;
