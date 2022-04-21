@@ -8,11 +8,12 @@ append head
 
 block content
   .nav-bar
-    .logo-container
-      .medium-img
-        img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
-      .large-font
-        h1.large-font Large
+    a(href='/' class='logo')
+      .logo-container
+        .medium-img
+          img(src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' class='medium-img')
+        .large-font
+          h1.large-font Large
     .button-container
       a(href='/about'): button(type='button' class='about-button') About Us
       if (isLoggedIn)

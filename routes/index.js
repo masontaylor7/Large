@@ -34,8 +34,15 @@ router.get('/', asyncHandler(async(req, res, next) => {
 }));
 
 router.get('/about', asyncHandler(async(req, res, next) => {
+  const isLoggedIn = res.locals.verified;
+  let user;
+  if (isLoggedIn) {
+    user = req.session.auth.userId
+  }
   res.render('about', {
-    title: 'About Us'
+    title: 'About Us',
+    isLoggedIn,
+    user
   })
 }));
 

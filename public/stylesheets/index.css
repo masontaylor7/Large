@@ -45,6 +45,7 @@ h1.large-font {
     color: white;
     border-radius: 50px;
     border: 1px;
+    cursor: pointer;
 }
 
 .logout-button {
@@ -198,4 +199,48 @@ h1.large-font {
 
 .post-date {
     margin: 0;
+}
+
+.about-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.collaborator-div {
+    padding: 50px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.collaborator-name {
+    font-size: large;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.collaborator-image {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+.icon-div {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.name-link {
+    text-decoration: none;
+}
+
+.name-link:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    text-decoration: none;
 }
